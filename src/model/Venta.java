@@ -1,16 +1,16 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Venta {
 
     private int id;
-
     private Cliente cliente;
-
     private LocalDateTime fecha;
-
     private double total;
+
+    private List<DetalleVenta> detalles;
 
     public Venta() {
     }
@@ -58,5 +58,15 @@ public class Venta {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    public List<DetalleVenta> getDetalles() {
+    return detalles;
+    }
+
+    public void setDetalles(
+            List<DetalleVenta> detalles
+    ) {
+        this.detalles = detalles;
     }
 }
