@@ -41,6 +41,6 @@ public class Polo extends Producto {
         System.out.println("Stock: " + stock);
         System.out.println("Talla: " + talla);
         System.out.println("Color: " + color);
-        System.out.println("Tipo Manga: " + atributo);
+        System.out.println("Tipo Cuello: " + atributo);
     }
 }

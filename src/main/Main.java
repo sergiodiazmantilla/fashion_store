@@ -1,42 +1,48 @@
-
 package main;
 
-import dao.ProductoDAO;
-import model.Polo;
-//import java.util.List;
+import dao.UsuarioDAO;
+import java.util.Scanner;
+import service.MenuService;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        ProductoDAO dao = new ProductoDAO();
-        Polo p = new Polo();
+        try (Scanner sc = new Scanner(System.in)) {
+            UsuarioDAO dao = new UsuarioDAO();
 
-        p.setNombre("Camisa Holden");
-        p.setTipo("Camisa");
-        p.setPrecio(89.90);
-        p.setStock(25);
-        p.setStockMinimo(5);
-        p.setTalla("L");
-        p.setColor("Azul");
-        p.setAtributo("Cuello Corbata");
-        dao.registrar(p);
+            System.out.println(
+                    "===== LOGIN ====="
+            );
+
+            System.out.print("Usuario: ");
+
+            String usuario = sc.nextLine();
+
+            System.out.print("Password: ");
+
+            String password = sc.nextLine();
+
+            boolean acceso =
+                    dao.login(usuario, password);
+
+            if (acceso) {
+
+                System.out.println(
+                        "Bienvenido al sistema"
+                );
+
+                MenuService menu =
+                        new MenuService();
+
+                menu.menuPrincipal();
+
+            } else {
+
+                System.out.println(
+                        "Datos incorrectos"
+                );
+            }
+        }
     }
 }
-
-/* 
-package main;
-
-import config.ConexionBD;
-
-public class Main {
-
-    public static void main(String[] args) {
-
-        ConexionBD.conectar();
-
-    }
-}
-
-*/
-
