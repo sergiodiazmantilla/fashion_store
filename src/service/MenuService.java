@@ -34,29 +34,12 @@ public class MenuService {
             opcion = sc.nextInt();
 
             switch (opcion) {
-
-                case 1:
-                    menuProductos();
-                    break;
-
-                case 2:
-                    menuClientes();
-                    break;
-
-                case 3:
-                    menuVentas();
-                    break;
-
-                case 4:
-                    menuReportes();
-                    break;
-
-                case 5:
-                    System.out.println("\nGracias por usar el sistema.");
-                    break;
-
-                default:
-                    System.out.println("\nOpcion invalida.");
+                case 1 -> menuProductos();
+                case 2 -> menuClientes();
+                case 3 -> menuVentas();
+                case 4 -> menuReportes();
+                case 5 -> System.out.println("\nGracias por usar el sistema.");
+                default -> System.out.println("\nOpcion invalida.");
             }
         } while (opcion != 5);
     }
@@ -83,37 +66,15 @@ public class MenuService {
             opcion = sc.nextInt();
 
             switch (opcion) {
-
-                case 1:
-                    productoService.registrarProducto();
-                    break;
-
-                case 2:
-                    productoService.listarProductos();
-                    break;
-
-                case 3:
-                    productoService.buscarProducto();
-                    break;
-
-                case 4:
-                    productoService.actualizarProducto();
-                    break;
-
-                case 5:
-                    productoService.eliminarProducto();
-                    break;
-
-                case 6:
-                    productoService.mostrarStockBajo();
-                    break;
-
-                case 7:
-                    break;
-
-                default:
-
-                    System.out.println("\nOpcion invalida.");
+                case 1 -> productoService.registrarProducto();
+                case 2 -> productoService.listarProductos();
+                case 3 -> productoService.buscarProducto();
+                case 4 -> productoService.actualizarProducto();
+                case 5 -> productoService.eliminarProducto();
+                case 6 -> productoService.mostrarStockBajo();
+                case 7 -> {
+                }
+                default -> System.out.println("\nOpcion invalida.");
             }
         } while (opcion != 7);
     }
@@ -138,32 +99,14 @@ public class MenuService {
             opcion = sc.nextInt();
 
             switch (opcion) {
-
-                case 1:
-                    clienteService.registrarCliente();
-                    break;
-
-                case 2:
-                    clienteService.listarClientes();
-                    break;
-
-                case 3:
-                    clienteService.buscarCliente();
-                    break;
-
-                case 4:
-                    clienteService.actualizarCliente();
-                    break;
-
-                case 5:
-                    clienteService.eliminarCliente();
-                    break;
-
-                case 6:
-                    break;
-
-                default:
-                    System.out.println("\nOpcion invalida.");
+                case 1 -> clienteService.registrarCliente();
+                case 2 -> clienteService.listarClientes();
+                case 3 -> clienteService.buscarCliente();
+                case 4 -> clienteService.actualizarCliente();
+                case 5 -> clienteService.eliminarCliente();
+                case 6 -> {
+                }
+                default -> System.out.println("\nOpcion invalida.");
             }
         } while (opcion != 6);
     }
@@ -187,25 +130,12 @@ public class MenuService {
             opcion = sc.nextInt();
 
             switch (opcion) {
-
-                case 1:
-                    ventaService.registrarVenta();
-                    break;
-
-                case 2:
-                    ventaService.listarVentas();
-                    break;
-
-                case 3:
-                    ventaService.verDetalleVenta();
-                    break;
-
-                case 4:
-                    break;
-
-                default:
-
-                    System.out.println("\nOpcion invalida.");
+                case 1 -> ventaService.registrarVenta();
+                case 2 -> ventaService.listarVentas();
+                case 3 -> ventaService.verDetalleVenta();
+                case 4 -> {
+                }
+                default -> System.out.println("\nOpcion invalida.");
             }
         } while (opcion != 4);
     }
@@ -229,28 +159,13 @@ public class MenuService {
             opcion = sc.nextInt();
 
             switch (opcion) {
-
-                case 1:
-                    reporteService.reporteVentasPorFecha();
-                    break;
-
-                case 2:
-                    reporteService.productosMasVendidos();
-                    break;
-
-                case 3:
-                    reporteService.stockBajo();
-                    break;
-
-                case 4:
-                    reporteService.totalVendido();
-                    break;
-
-                case 5:
-                    break;
-
-                default:
-                    System.out.println("\nOpcion invalida.");
+                case 1 -> reporteService.reporteVentasPorFecha();
+                case 2 -> reporteService.productosMasVendidos();
+                case 3 -> reporteService.stockBajo();
+                case 4 -> reporteService.totalVendido();
+                case 5 -> {
+                }
+                default -> System.out.println("\nOpcion invalida.");
             }
         } while (opcion != 5);
     }
