@@ -319,4 +319,160 @@ public class VentaDAO {
             );
         }
     }
+
+    // =========================================
+    // REPORTE VENTAS POR FECHA
+    // =========================================
+
+    public void ventasPorFecha(
+            String fechaInicio,
+            String fechaFin
+    ) {
+
+        String sql = """
+                SELECT v.id,
+                       c.nombre,
+                       v.fecha,
+                       v.total
+                FROM ventas v
+                INNER JOIN clientes c
+                ON v.cliente_id = c.id
+                WHERE DATE(v.fecha)
+                BETWEEN ? AND ?
+                """;
+
+        try {
+
+            PreparedStatement ps =
+                    conexion.prepareStatement(sql);
+
+            ps.setString(1, fechaInicio);
+
+            ps.setString(2, fechaFin);
+
+            ResultSet rs =
+                    ps.executeQuery();
+
+            System.out.println(
+                    "\n===== REPORTE VENTAS ====="
+            );
+
+            while (rs.next()) {
+
+                System.out.println(
+                        "\nVenta ID: "
+                                + rs.getInt("id")
+                );
+
+                System.out.println(
+                        "Cliente: "
+                                + rs.getString("nombre")
+                );
+
+                System.out.println(
+                        "Fecha: "
+                                + rs.getTimestamp("fecha")
+                );
+
+                System.out.println(
+                        "Total: S/ "
+                                + rs.getDouble("total")
+                );
+            }
+
+        } catch (SQLException e) {
+
+            System.out.println(
+                    "Error reporte ventas: "
+                            + e.getMessage()
+            );
+        }
+    }
+
+    // =========================================
+    // PRODUCTOS MAS VENDIDOS
+    // =========================================
+
+    public void productosMasVendidos() {
+
+        String sql = """
+                SELECT p.nombre,
+                       SUM(d.cantidad) AS total_vendido
+                FROM detalle_venta d
+                INNER JOIN productos p
+                ON d.producto_id = p.id
+                GROUP BY p.nombre
+                ORDER BY total_vendido DESC
+                LIMIT 5
+                """;
+
+        try {
+
+            PreparedStatement ps =
+                    conexion.prepareStatement(sql);
+
+            ResultSet rs =
+                    ps.executeQuery();
+
+            System.out.println(
+                    "\n===== PRODUCTOS MAS VENDIDOS ====="
+            );
+
+            while (rs.next()) {
+
+                System.out.println(
+                        "\nProducto: "
+                                + rs.getString("nombre")
+                );
+
+                System.out.println(
+                        "Cantidad Vendida: "
+                                + rs.getInt("total_vendido")
+                );
+            }
+
+        } catch (SQLException e) {
+
+            System.out.println(
+                    "Error productos vendidos: "
+                            + e.getMessage()
+            );
+        }
+    }
+
+    // =========================================
+    // TOTAL VENDIDO
+    // =========================================
+
+    public void totalVendido() {
+
+        String sql = """
+                SELECT SUM(total) AS total_general
+                FROM ventas
+                """;
+
+        try {
+
+            PreparedStatement ps =
+                    conexion.prepareStatement(sql);
+
+            ResultSet rs =
+                    ps.executeQuery();
+
+            if (rs.next()) {
+
+                System.out.println(
+                        "\nTOTAL GENERAL VENDIDO: S/ "
+                                + rs.getDouble("total_general")
+                );
+            }
+
+        } catch (SQLException e) {
+
+            System.out.println(
+                    "Error total vendido: "
+                            + e.getMessage()
+            );
+        }
+    }
 }
