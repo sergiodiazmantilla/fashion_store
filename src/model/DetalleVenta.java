@@ -3,13 +3,10 @@ package model;
 public class DetalleVenta {
 
     private int id;
-
     private Venta venta;
-
     private Producto producto;
-
+    private double precioUnitario;
     private int cantidad;
-
     private double subtotal;
 
     public DetalleVenta() {
@@ -19,6 +16,7 @@ public class DetalleVenta {
             int id,
             Venta venta,
             Producto producto,
+            double precioUnitario,
             int cantidad,
             double subtotal
     ) {
@@ -26,6 +24,7 @@ public class DetalleVenta {
         this.id = id;
         this.venta = venta;
         this.producto = producto;
+        this.precioUnitario = precioUnitario;
         this.cantidad = cantidad;
         this.subtotal = subtotal;
     }
@@ -52,6 +51,14 @@ public class DetalleVenta {
 
     public void setProducto(Producto producto) {
         this.producto = producto;
+    }
+
+    public double getPrecioUnitario() {
+        return precioUnitario;
+    }
+
+    public void setPrecioUnitario(double precioUnitario) {
+        this.precioUnitario = precioUnitario;
     }
 
     public int getCantidad() {
