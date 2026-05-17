@@ -1,48 +1,14 @@
 package main;
 
-import dao.UsuarioDAO;
-import java.util.Scanner;
-import service.MenuService;
+import view.LoginFrame;
 
 public class Main {
 
+    @SuppressWarnings("unused")
+    private static LoginFrame loginFrame;
+
     public static void main(String[] args) {
 
-        try (Scanner sc = new Scanner(System.in)) {
-            UsuarioDAO dao = new UsuarioDAO();
-
-            System.out.println(
-                    "===== LOGIN ====="
-            );
-
-            System.out.print("Usuario: ");
-
-            String usuario = sc.nextLine();
-
-            System.out.print("Password: ");
-
-            String password = sc.nextLine();
-
-            boolean acceso =
-                    dao.login(usuario, password);
-
-            if (acceso) {
-
-                System.out.println(
-                        "Bienvenido al sistema"
-                );
-
-                MenuService menu =
-                        new MenuService();
-
-                menu.menuPrincipal();
-
-            } else {
-
-                System.out.println(
-                        "Datos incorrectos"
-                );
-            }
-        }
+        loginFrame = new LoginFrame();
     }
 }
