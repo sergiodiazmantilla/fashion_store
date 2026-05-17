@@ -16,14 +16,10 @@ public class ProductoDAO implements Crud<Producto> {
     Connection conexion;
 
     public ProductoDAO() {
-
         conexion = ConexionBD.conectar();
     }
 
-    // ====================================
     // REGISTRAR
-    // ====================================
-
     @Override
     public void registrar(Producto p) {
 
@@ -51,15 +47,11 @@ public class ProductoDAO implements Crud<Producto> {
             System.out.println("Producto registrado correctamente");
 
         } catch (SQLException e) {
-
             System.out.println("Error al registrar producto: "+ e.getMessage());
         }
     }
 
-    // ====================================
     // LISTAR
-    // ====================================
-
     @Override
     public List<Producto> listar() {
 
@@ -70,11 +62,9 @@ public class ProductoDAO implements Crud<Producto> {
         try {
 
             PreparedStatement ps = conexion.prepareStatement(sql);
-
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-
                 Producto p = new Polo();
 
                 p.setId(rs.getInt("id"));
@@ -90,17 +80,13 @@ public class ProductoDAO implements Crud<Producto> {
             }
 
         } catch (SQLException e) {
-
             System.out.println("Error al listar productos: "+ e.getMessage());
         }
 
         return lista;
     }
 
-    // ====================================
     // BUSCAR
-    // ====================================
-
     @Override
     public Producto buscarPorId(int id) {
 
@@ -131,17 +117,13 @@ public class ProductoDAO implements Crud<Producto> {
             }
 
         } catch (SQLException e) {
-
             System.out.println("Error al buscar producto: "+ e.getMessage());
         }
 
         return p;
     }
 
-    // ====================================
     // ACTUALIZAR
-    // ====================================
-
     @Override
     public void actualizar(Producto p) {
 
@@ -180,10 +162,7 @@ public class ProductoDAO implements Crud<Producto> {
         }
     }
 
-    // ====================================
     // ELIMINAR
-    // ====================================
-
     @Override
     public void eliminar(int id) {
 
@@ -199,19 +178,14 @@ public class ProductoDAO implements Crud<Producto> {
             System.out.println("Producto eliminado correctamente");
 
         } catch (SQLException e) {
-
             System.out.println("Error al eliminar producto: "+ e.getMessage());
         }
     }
 
-    // ====================================
     // STOCK BAJO
-    // ====================================
-
     public List<Producto> stockBajo() {
 
-        List<Producto> lista =
-                new ArrayList<>();
+        List<Producto> lista =new ArrayList<>();
 
         String sql = 
                 """
@@ -222,7 +196,6 @@ public class ProductoDAO implements Crud<Producto> {
         try {
 
             PreparedStatement ps = conexion.prepareStatement(sql);
-
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -242,7 +215,6 @@ public class ProductoDAO implements Crud<Producto> {
             }
 
         } catch (SQLException e) {
-
             System.out.println("Error stock bajo: "+ e.getMessage());
         }
 

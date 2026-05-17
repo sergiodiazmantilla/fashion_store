@@ -9,18 +9,9 @@ public class DetalleVenta {
     private int cantidad;
     private double subtotal;
 
-    public DetalleVenta() {
-    }
+    public DetalleVenta() {}
 
-    public DetalleVenta(
-            int id,
-            Venta venta,
-            Producto producto,
-            double precioUnitario,
-            int cantidad,
-            double subtotal
-    ) {
-
+    public DetalleVenta(int id,Venta venta,Producto producto,double precioUnitario,int cantidad,double subtotal) {
         this.id = id;
         this.venta = venta;
         this.producto = producto;
@@ -29,6 +20,7 @@ public class DetalleVenta {
         this.subtotal = subtotal;
     }
 
+    // GETTERS Y SETTERS
     public int getId() {
         return id;
     }

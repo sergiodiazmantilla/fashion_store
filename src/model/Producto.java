@@ -16,22 +16,10 @@ public abstract class Producto {
     protected String atributo;
 
     // Constructor vacío
-    public Producto() {
-    }
+    public Producto() {}
 
     // Constructor completo
-    public Producto(
-            int id,
-            String nombre,
-            String tipo,
-            double precio,
-            int stock,
-            int stockMinimo,
-            String talla,
-            String color,
-            String atributo
-    ) {
-
+    public Producto(int id,String nombre,String tipo,double precio,int stock,int stockMinimo,String talla,String color,String atributo) {
         this.id = id;
         this.nombre = nombre;
         this.tipo = tipo;
@@ -52,7 +40,6 @@ public abstract class Producto {
     }
 
     // GETTERS Y SETTERS
-
     public int getId() {
         return id;
     }

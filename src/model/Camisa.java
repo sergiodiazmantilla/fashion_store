@@ -2,32 +2,10 @@ package model;
 
 public class Camisa extends Producto {
 
-    public Camisa() {
-    }
+    public Camisa() {}
 
-    public Camisa(
-            int id,
-            String nombre,
-            String tipo,
-            double precio,
-            int stock,
-            int stockMinimo,
-            String talla,
-            String color,
-            String atributo
-    ) {
-
-        super(
-                id,
-                nombre,
-                tipo,
-                precio,
-                stock,
-                stockMinimo,
-                talla,
-                color,
-                atributo
-        );
+    public Camisa(int id,String nombre,String tipo,double precio,int stock,int stockMinimo,String talla,String color,String atributo) {
+        super(id,nombre,tipo,precio,stock,stockMinimo,talla,color,atributo);
     }
 
     @Override

@@ -12,16 +12,9 @@ public class Venta {
 
     private List<DetalleVenta> detalles;
 
-    public Venta() {
-    }
+    public Venta() {}
 
-    public Venta(
-            int id,
-            Cliente cliente,
-            LocalDateTime fecha,
-            double total
-    ) {
-
+    public Venta(int id,Cliente cliente,LocalDateTime fecha,double total) {
         this.id = id;
         this.cliente = cliente;
         this.fecha = fecha;

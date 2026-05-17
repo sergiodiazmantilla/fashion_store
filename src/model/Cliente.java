@@ -9,18 +9,10 @@ public class Cliente {
     private String correo;
 
     // Constructor vacío
-    public Cliente() {
-    }
+    public Cliente() {}
 
     // Constructor completo
-    public Cliente(
-            int id,
-            String dni,
-            String nombre,
-            String telefono,
-            String correo
-    ) {
-
+    public Cliente(int id,String dni,String nombre,String telefono,String correo) {
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
@@ -29,7 +21,6 @@ public class Cliente {
     }
 
     // GETTERS Y SETTERS
-
     public int getId() {
         return id;
     }
@@ -72,7 +63,6 @@ public class Cliente {
 
     // Mostrar información
     public void mostrarInformacion() {
-
         System.out.println("===== CLIENTE =====");
 
         System.out.println("ID: " + id);

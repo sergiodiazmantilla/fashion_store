@@ -12,10 +12,7 @@ public class MenuService {
     VentaService ventaService = new VentaService();
     ReporteService reporteService = new ReporteService();
 
-    // =========================
     // MENU PRINCIPAL
-    // =========================
-
     public void menuPrincipal() {
 
         int opcion;
@@ -44,10 +41,7 @@ public class MenuService {
         } while (opcion != 5);
     }
 
-    // =========================
     // MENU PRODUCTOS
-    // =========================
-
     public void menuProductos() {
 
         int opcion;
@@ -79,10 +73,7 @@ public class MenuService {
         } while (opcion != 7);
     }
 
-    // =========================
     // MENU CLIENTES
-    // =========================
-
     public void menuClientes() {
 
         int opcion;
@@ -111,10 +102,7 @@ public class MenuService {
         } while (opcion != 6);
     }
 
-    // =========================
     // MENU VENTAS
-    // =========================
-
     public void menuVentas() {
 
         int opcion;
@@ -140,10 +128,7 @@ public class MenuService {
         } while (opcion != 4);
     }
 
-    // =========================
     // MENU REPORTES
-    // =========================
-
     public void menuReportes() {
 
         int opcion;

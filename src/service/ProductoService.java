@@ -9,13 +9,9 @@ public class ProductoService {
 
     Scanner sc = new Scanner(System.in);
 
-    ProductoDAO productoDAO =
-            new ProductoDAO();
+    ProductoDAO productoDAO =new ProductoDAO();
 
-    // =========================================
     // REGISTRAR PRODUCTO
-    // =========================================
-
     public void registrarProducto() {
 
         sc.nextLine();
@@ -23,11 +19,9 @@ public class ProductoService {
         System.out.println("\n===== REGISTRAR PRODUCTO =====");
 
         System.out.print("Nombre: ");
-
         String nombre = sc.nextLine();
 
         System.out.println("\nTipo:");
-
         System.out.println("1. Polo");
         System.out.println("2. Camisa");
         System.out.println("3. Pantalon");
@@ -35,9 +29,7 @@ public class ProductoService {
         System.out.print("Seleccione tipo: ");
 
         int opcion =sc.nextInt();
-
         sc.nextLine();
-
         Producto p;
 
         switch (opcion) {
@@ -92,10 +84,7 @@ public class ProductoService {
         productoDAO.registrar(p);
     }
 
-    // =========================================
     // LISTAR PRODUCTOS
-    // =========================================
-
     public void listarProductos() {
 
         System.out.println("\n===== LISTA PRODUCTOS =====");
@@ -103,181 +92,93 @@ public class ProductoService {
         List<Producto> lista = productoDAO.listar();
 
         if (lista.isEmpty()) {
-
             System.out.println("No existen productos.");
-
             return;
         }
 
         for (Producto p : lista) {
-
             p.mostrarInformacion();
-
             System.out.println("----------------------");
         }
     }
 
-    // =========================================
     // BUSCAR PRODUCTO
-    // =========================================
-
     public void buscarProducto() {
 
-        System.out.print(
-                "\nIngrese ID producto: "
-        );
+        System.out.print("\nIngrese ID producto: ");
 
-        int id =
-                sc.nextInt();
+        int id =sc.nextInt();
 
-        Producto p =
-                productoDAO.buscarPorId(id);
+        Producto p =productoDAO.buscarPorId(id);
 
         if (p != null) {
-
             p.mostrarInformacion();
-
         } else {
-
-            System.out.println(
-                    "Producto no encontrado."
-            );
+            System.out.println("Producto no encontrado.");
         }
     }
 
-    // =========================================
     // ACTUALIZAR PRODUCTO
-    // =========================================
-
     public void actualizarProducto() {
 
-        System.out.print(
-                "\nIngrese ID producto: "
-        );
+        System.out.print("\nIngrese ID producto: ");
+        int id =sc.nextInt();
 
-        int id =
-                sc.nextInt();
-
-        Producto p =
-                productoDAO.buscarPorId(id);
+        Producto p =productoDAO.buscarPorId(id);
 
         if (p == null) {
-
-            System.out.println(
-                    "Producto no encontrado."
-            );
-
+            System.out.println("Producto no encontrado.");
             return;
         }
 
         sc.nextLine();
+        System.out.print("Nuevo nombre: ");
+        p.setNombre(sc.nextLine());
 
-        System.out.print(
-                "Nuevo nombre: "
-        );
+        System.out.print("Nuevo precio: ");
+        p.setPrecio(sc.nextDouble());
 
-        p.setNombre(
-                sc.nextLine()
-        );
+        System.out.print("Nuevo stock: ");
+        p.setStock(sc.nextInt());
 
-        System.out.print(
-                "Nuevo precio: "
-        );
-
-        p.setPrecio(
-                sc.nextDouble()
-        );
-
-        System.out.print(
-                "Nuevo stock: "
-        );
-
-        p.setStock(
-                sc.nextInt()
-        );
-
-        System.out.print(
-                "Nuevo stock minimo: "
-        );
-
-        p.setStockMinimo(
-                sc.nextInt()
-        );
-
+        System.out.print("Nuevo stock minimo: ");
+        p.setStockMinimo(sc.nextInt());
         sc.nextLine();
 
-        System.out.print(
-                "Nueva talla: "
-        );
+        System.out.print("Nueva talla: ");
+        p.setTalla(sc.nextLine());
 
-        p.setTalla(
-                sc.nextLine()
-        );
+        System.out.print("Nuevo color: ");
+        p.setColor(sc.nextLine());
 
-        System.out.print(
-                "Nuevo color: "
-        );
-
-        p.setColor(
-                sc.nextLine()
-        );
-
-        System.out.print(
-                "Nueva Tipo Cuello: "
-        );
-
-        p.setAtributo(
-                sc.nextLine()
-        );
+        System.out.print("Nueva Tipo Cuello: ");
+        p.setAtributo(sc.nextLine());
 
         productoDAO.actualizar(p);
     }
 
-    // =========================================
     // ELIMINAR PRODUCTO
-    // =========================================
-
     public void eliminarProducto() {
-
-        System.out.print(
-                "\nIngrese ID producto: "
-        );
-
-        int id =
-                sc.nextInt();
-
+        System.out.print("\nIngrese ID producto: ");
+        int id =sc.nextInt();
         productoDAO.eliminar(id);
     }
 
-    // =========================================
     // STOCK BAJO
-    // =========================================
-
     public void mostrarStockBajo() {
 
-        System.out.println(
-                "\n===== STOCK BAJO ====="
-        );
+        System.out.println("\n===== STOCK BAJO =====");
 
-        List<Producto> lista =
-                productoDAO.stockBajo();
+        List<Producto> lista =productoDAO.stockBajo();
 
         if (lista.isEmpty()) {
-
-            System.out.println(
-                    "No hay productos con stock bajo."
-            );
-
+            System.out.println("No hay productos con stock bajo.");
             return;
         }
 
         for (Producto p : lista) {
-
             p.mostrarInformacion();
-
-            System.out.println(
-                    "----------------------"
-            );
+            System.out.println("----------------------");
         }
     }
 }

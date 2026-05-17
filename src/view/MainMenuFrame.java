@@ -6,41 +6,26 @@ import javax.swing.*;
 public class MainMenuFrame extends JFrame {
 
     private JButton btnProductos;
-
     private JButton btnClientes;
-
     private JButton btnVentas;
-
     private JButton btnReportes;
-
     private JButton btnSalir;
 
     @SuppressWarnings("unused")
     private ProductosFrame productosFrame;
 
     public MainMenuFrame() {
-
         setTitle("Fashion Store");
-
         setSize(500, 400);
-
         setLocationRelativeTo(null);
-
-        setDefaultCloseOperation(
-                JFrame.EXIT_ON_CLOSE
-        );
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         setLayout(null);
-
         inicializarComponentes();
-
         setVisible(true);
     }
 
-    // =====================================
     // COMPONENTES
-    // =====================================
-
     private void inicializarComponentes() {
 
         JLabel lblTitulo =new JLabel("FASHION STORE");
@@ -74,36 +59,22 @@ public class MainMenuFrame extends JFrame {
 
         // EVENTOS
         btnProductos.addActionListener(e -> {
-
-        productosFrame = new ProductosFrame();
+            productosFrame = new ProductosFrame();
         });
 
         btnClientes.addActionListener(e -> {
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Modulo Clientes"
-            );
+            JOptionPane.showMessageDialog(this,"Modulo Clientes");
         });
 
         btnVentas.addActionListener(e -> {
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Modulo Ventas"
-            );
+            JOptionPane.showMessageDialog(this,"Modulo Ventas");
         });
 
         btnReportes.addActionListener(e -> {
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Modulo Reportes"
-            );
+            JOptionPane.showMessageDialog(this,"Modulo Reportes");
         });
 
         btnSalir.addActionListener(e -> {
-
             System.exit(0);
         });
     }

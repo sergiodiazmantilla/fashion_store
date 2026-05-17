@@ -36,7 +36,7 @@ public class ProductosFrame extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new BorderLayout(10, 10));
 
-        // 🎨 Colores y estilo
+        // Colores y estilo
         Color fondo = new Color(245, 245, 250);
         Color encabezado = new Color(6, 90, 130);
         Font fuenteTitulo = new Font("Arial", Font.BOLD, 18);
@@ -81,7 +81,7 @@ public class ProductosFrame extends JFrame {
         modelo.addColumn("Color");
         modelo.addColumn("Atributo");
         
-        // Tabla abajo (usa el modelo compartido)
+        // Tabla abajo
         tabla = new JTable(modelo);
         tabla.setRowHeight(28);
         tabla.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
@@ -97,6 +97,7 @@ public class ProductosFrame extends JFrame {
         tabla.getColumnModel().getColumn(5).setPreferredWidth(60);   // Talla
         tabla.getColumnModel().getColumn(6).setPreferredWidth(100);  // Color
         tabla.getColumnModel().getColumn(7).setPreferredWidth(150);  // Atributo
+        
         // Botones
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JButton btnGuardar = new JButton("Guardar");
@@ -120,9 +121,8 @@ public class ProductosFrame extends JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 int fila = tabla.getSelectedRow();
                 if (fila >= 0) {
-                    idSeleccionado = Integer.parseInt(
-                            modelo.getValueAt(fila, 0).toString()
-                    );
+                    idSeleccionado = Integer.parseInt(modelo.getValueAt(fila, 0).toString());
+
                     txtNombre.setText(modelo.getValueAt(fila, 1).toString());
                     cbTipo.setSelectedItem(modelo.getValueAt(fila, 2).toString());
                     txtPrecio.setText(modelo.getValueAt(fila, 3).toString());
@@ -138,7 +138,7 @@ public class ProductosFrame extends JFrame {
         setVisible(true);
     }
 
-    // Métodos CRUD (igual que antes)...
+    // Métodos CRUD
     @SuppressWarnings("UseSpecificCatch")
     private void guardarProducto() {
 
@@ -152,7 +152,7 @@ public class ProductosFrame extends JFrame {
             String color = txtColor.getText().trim();
             String atributo = txtAtributo.getText().trim();
             
-            // VALIDAR CAMPOS
+            // VARLIDAR CAMPOS
             if (nombre.isEmpty()
                     || txtPrecio.getText().isEmpty()
                     || txtStock.getText().isEmpty()
@@ -163,26 +163,22 @@ public class ProductosFrame extends JFrame {
                 JOptionPane.showMessageDialog(this,"Complete todos los campos");
                 return;
             }
+            
             // CREAR PRODUCTO SEGUN TIPO
             Producto producto;
 
             switch (tipo) {
 
-                case "Camisa" -> producto =
-                        new Camisa();
+                case "Camisa" -> producto =new Camisa();
 
-                case "Pantalon" -> producto =
-                        new Pantalon();
+                case "Pantalon" -> producto =new Pantalon();
 
-                case "Calzado" -> producto =
-                        new Calzado();
+                case "Calzado" -> producto =new Calzado();
 
-                default -> producto =
-                        new Polo();
+                default -> producto =new Polo();
             }
 
             // DATOS
-
             producto.setNombre(nombre);
             producto.setTipo(tipo);
             producto.setPrecio(precio);
@@ -209,21 +205,13 @@ public class ProductosFrame extends JFrame {
     private void editarProducto() {
 
         if (idSeleccionado == -1) {
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Seleccione un producto"
-            );
-
+            JOptionPane.showMessageDialog(this,"Seleccione un producto");
             return;
         }
 
         try {
-
             Producto producto;
-
-            String tipo =
-                    cbTipo.getSelectedItem().toString();
+            String tipo =cbTipo.getSelectedItem().toString();
 
             switch (tipo) {
 
@@ -237,64 +225,38 @@ public class ProductosFrame extends JFrame {
             }
 
             producto.setId(idSeleccionado);
-
             producto.setNombre(txtNombre.getText());
-
             producto.setTipo(tipo);
-
-            producto.setPrecio(
-                    Double.parseDouble(txtPrecio.getText())
-            );
-
-            producto.setStock(
-                    Integer.parseInt(txtStock.getText())
-            );
+            producto.setPrecio(Double.parseDouble(txtPrecio.getText()));
+            producto.setStock(Integer.parseInt(txtStock.getText()));
             producto.setTalla(txtTalla.getText());
             producto.setColor(txtColor.getText());
             producto.setAtributo(txtAtributo.getText());
 
             productoDAO.actualizar(producto);
 
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Producto actualizado"
-            );
+            JOptionPane.showMessageDialog(this,"Producto actualizado");
 
             listarProductos();
             limpiarCampos();
 
         } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Error: " + e.getMessage()
-            );
+            JOptionPane.showMessageDialog(this,"Error: " + e.getMessage());
         }
     }
 
     private void eliminarProducto() {
 
         if (idSeleccionado == -1) {
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Seleccione un producto"
-            );
-
+            JOptionPane.showMessageDialog(this,"Seleccione un producto");
             return;
         }
 
-        int opcion = JOptionPane.showConfirmDialog(
-                this,
-                "¿Eliminar producto?",
-                "Confirmar",
-                JOptionPane.YES_NO_OPTION
-        );
+        int opcion = 
+            JOptionPane.showConfirmDialog(this,"¿Eliminar producto?","Confirmar",JOptionPane.YES_NO_OPTION);
 
         if (opcion == JOptionPane.YES_OPTION) {
-
             productoDAO.eliminar(idSeleccionado);
-
             JOptionPane.showMessageDialog(this,"Producto eliminado");
             
             listarProductos();
@@ -311,17 +273,14 @@ public class ProductosFrame extends JFrame {
         txtAtributo.setText("");
 
         idSeleccionado = -1;
-
     }
 
     private void listarProductos() {
 
         modelo.setRowCount(0);
-
         List<Producto> lista = productoDAO.listar();
 
         for (Producto p : lista) {
-
             modelo.addRow(new Object[]{
                 p.getId(),
                 p.getNombre(),

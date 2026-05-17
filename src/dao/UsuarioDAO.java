@@ -11,16 +11,11 @@ public class UsuarioDAO {
     Connection conexion;
 
     public UsuarioDAO() {
-
         conexion = ConexionBD.conectar();
     }
 
     // LOGIN
-    public boolean login(
-            String usuario,
-            String password
-    ) {
-
+    public boolean login(String usuario,String password) {
         String sql = """
                 SELECT *
                 FROM usuarios
@@ -29,24 +24,15 @@ public class UsuarioDAO {
                 """;
 
         try {
-
-            PreparedStatement ps =
-                    conexion.prepareStatement(sql);
-
+            PreparedStatement ps =conexion.prepareStatement(sql);
             ps.setString(1, usuario);
-
             ps.setString(2, password);
-
             ResultSet rs = ps.executeQuery();
 
             return rs.next();
 
         } catch (SQLException e) {
-
-            System.out.println(
-                    "Error login: "
-                            + e.getMessage()
-            );
+            System.out.println("Error login: "+ e.getMessage());
         }
 
         return false;

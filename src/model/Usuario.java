@@ -6,15 +6,9 @@ public class Usuario {
     private String usuario;
     private String password;
 
-    public Usuario() {
-    }
+    public Usuario() {}
 
-    public Usuario(
-            int id,
-            String usuario,
-            String password
-    ) {
-
+    public Usuario(int id,String usuario,String password) {
         this.id = id;
         this.usuario = usuario;
         this.password = password;

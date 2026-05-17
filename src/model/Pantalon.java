@@ -2,37 +2,14 @@ package model;
 
 public class Pantalon extends Producto {
 
-    public Pantalon() {
-    }
+    public Pantalon() {}
 
-    public Pantalon(
-            int id,
-            String nombre,
-            String tipo,
-            double precio,
-            int stock,
-            int stockMinimo,
-            String talla,
-            String color,
-            String atributo
-    ) {
-
-        super(
-                id,
-                nombre,
-                tipo,
-                precio,
-                stock,
-                stockMinimo,
-                talla,
-                color,
-                atributo
-        );
+    public Pantalon(int id,String nombre,String tipo,double precio,int stock,int stockMinimo,String talla,String color,String atributo) {
+        super(id,nombre,tipo,precio,stock,stockMinimo,talla,color,atributo);
     }
 
     @Override
     public void mostrarInformacion() {
-
         System.out.println("===== PANTALON =====");
 
         System.out.println("ID: " + id);
