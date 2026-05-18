@@ -13,10 +13,10 @@ public class Main_Console {
 
             System.out.println("===== LOGIN =====");
             
-            System.out.print("Usuario: ");
+            System.out.print("Usuario(admin): ");
             String usuario = sc.nextLine();
             
-            System.out.print("Password: ");
+            System.out.print("Password(1234): ");
             String password = sc.nextLine();
 
             boolean acceso =dao.login(usuario, password);

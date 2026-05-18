@@ -60,6 +60,25 @@ public class LoginFrame extends JFrame {
         btnLogin.setBounds(130,170,120,30);
         add(btnLogin);
 
+        //BOTON CREDENCIALES
+        JButton btnInfo = new JButton("ⓘ");
+        btnInfo.setBounds(260,170,50,30);
+        btnInfo.setToolTipText("Mostrar credenciales");
+        add(btnInfo);
+        btnInfo.addActionListener(e -> {
+
+            JOptionPane.showMessageDialog(
+                this, 
+                    """
+                    Credenciales de acceso:
+                    Usuario: admin
+                    Password: 1234""",
+
+                    "Información",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+        });
+
         // EVENTO LOGIN
         btnLogin.addActionListener(e -> login());
     }
